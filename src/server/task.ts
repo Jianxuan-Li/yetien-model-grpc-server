@@ -1,6 +1,6 @@
-import { post } from "./request"
-import { download } from "./s3";
-import { config } from "../config";
+import { post } from './request';
+import { download } from './s3';
+import { config } from '../config';
 
 export type taskResult = {
   status: number;

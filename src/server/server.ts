@@ -1,62 +1,52 @@
-import path from "path";
 import * as grpc from '@grpc/grpc-js';
-import * as protoLoader from '@grpc/proto-loader';
-import moment from "moment";
-import { config } from "../config";
-import { runTask } from "./task"
-
-let packageDefinition = protoLoader.loadSync(
-  path.join(config.basepath, "asrserver.proto"),
-  { keepCase: true, defaults: true, oneofs: true }
-);
-let asrProto: any = grpc.loadPackageDefinition(packageDefinition).asrserver;
+import moment from 'moment';
+import { runTask } from './task';
+import asrProto from '../proto';
 
 async function runAsr(call, callback) {
-  let stime = performance.now(); // start time
+  const stime = performance.now(); // start time
 
-  const currentTime = moment().format("YYYY-MM-DD HH:mm:ss");
-  console.log(`Task: ${call.request.speakingId} ${call.request.objectId} ${currentTime}`);
+  const currentTime = moment().format('YYYY-MM-DD HH:mm:ss');
+  process.stdout.write(
+    `Task: ${call.request.speakingId} ${call.request.objectId} ${currentTime} \n`
+  );
 
   try {
-    let result = await runTask(call.request.objectId);
-    console.log("result", result.data)
+    const result = await runTask(call.request.objectId);
+    console.log('result', result.data);
 
-    let resp = {
+    const resp = {
       status: true,
       text: result.data,
       duration: 0,
-      error: "",
+      error: ''
     };
 
-    let etime = performance.now(); // end time
+    const etime = performance.now(); // end time
     resp.duration = (etime - stime) / 1000;
     resp.duration = Math.round(resp.duration * 100) / 100;
     console.log(`Task completed. Duration: ${resp.duration} seconds`);
     callback(null, resp);
   } catch (error) {
-    let resp = {
+    const resp = {
       status: false,
-      text: "",
+      text: '',
       duration: 0,
-      error: error,
+      error: error
     };
     callback(error, resp);
   }
 }
 
 export default function main(address: string) {
-  var server = new grpc.Server();
+  const server = new grpc.Server();
 
   server.addService(asrProto.Asr.service, {
-    runAsr: runAsr,
+    runAsr: runAsr
   });
 
-  server.bindAsync(
-    address,
-    grpc.ServerCredentials.createInsecure(),
-    () => {
-      server.start();
-      console.log("Server running at " + address);
-    }
-  );
+  server.bindAsync(address, grpc.ServerCredentials.createInsecure(), () => {
+    server.start();
+    console.log('Server running at ' + address);
+  });
 }
