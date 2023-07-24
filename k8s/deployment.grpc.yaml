@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yetien-asr-grpc-server
+  labels:
+    app: yetien-asr-grpc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yetien-asr-grpc-server
+  template:
+    metadata:
+      labels:
+        app: yetien-asr-grpc-server
+    spec:
+      imagePullSecrets:
+        - name: __PULL_SECRET__
+      containers:
+        - name: yetien-asr-grpc-server
+          image: __IMAGE__:__IMAGE_TAG__
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          envFrom:
+            - configMapRef:
+                name: yetien-asr-grpc-env-config

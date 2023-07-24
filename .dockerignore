@@ -1,0 +1,12 @@
+.git
+.github
+.next
+.vscode
+dist
+build
+built
+node_modules
+README.md
+.gitignore
+next-env.d.ts
+docs

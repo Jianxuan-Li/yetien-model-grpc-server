@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: yetien-asr-grpc-server
+spec:
+  selector:
+    app: yetien-asr-grpc-server
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+      name: http
