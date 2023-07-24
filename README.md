@@ -1,9 +1,11 @@
 # Yetien
 
+![release](https://github.com/jianxuan-li/yetien-model-grpc-server/actions/workflows/release.yaml/badge.svg)
+
 ## Original Repo
 
 https://github.com/Jianxuan-Li/yetien-backend-asr-grpc
-
+https://github.com/Jianxuan-Li/yetien-backend-asr-grpc-nodejs
 
 ## Overview
 
