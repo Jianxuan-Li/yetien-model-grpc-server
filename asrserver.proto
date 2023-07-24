@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package asrserver;
+
+service Asr {
+  rpc RunAsr (NewTaskRequest) returns (TaskRecieved) {}
+}
+
+message NewTaskRequest {
+  string speakingId = 1;
+  string objectId = 2;
+}
+
+message TaskRecieved {
+  bool status = 1;
+  string text = 2;
+  float duration = 3;
+  string error = 4;
+}
