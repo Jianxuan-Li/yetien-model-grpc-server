@@ -4,8 +4,8 @@
 
 ## Original Repo
 
-https://github.com/Jianxuan-Li/yetien-backend-asr-grpc
-https://github.com/Jianxuan-Li/yetien-backend-asr-grpc-nodejs
+* (Python prototype) https://github.com/Jianxuan-Li/yetien-backend-asr-grpc
+* (Nodejs ES6 prototype) https://github.com/Jianxuan-Li/yetien-backend-asr-grpc-nodejs
 
 ## Overview
 

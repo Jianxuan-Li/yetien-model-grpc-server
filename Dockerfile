@@ -10,6 +10,7 @@ COPY . .
 
 RUN pnpm install -s
 RUN pnpm run build
+RUN pnpm prune --prod --no-optional
 
 FROM node:18.14.2-alpine3.17 AS runner
 
