@@ -4,5 +4,5 @@ module.exports = {
   testEnvironment: 'node',
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coverageReporters: ['json', 'html', 'text'],
+  coverageReporters: ['json', 'html', 'text']
 };
