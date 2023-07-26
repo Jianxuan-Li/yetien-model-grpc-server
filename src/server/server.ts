@@ -19,7 +19,8 @@ async function runAsr(call, callback) {
       status: true,
       text: result.data,
       duration: 0,
-      error: ''
+      error: '',
+      doneBy: 'self-hosted'
     };
 
     const etime = performance.now(); // end time
@@ -32,7 +33,8 @@ async function runAsr(call, callback) {
       status: false,
       text: '',
       duration: 0,
-      error: error
+      error: error,
+      doneBy: 'self-hosted'
     };
     callback(error, resp);
   }
