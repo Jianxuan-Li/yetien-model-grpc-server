@@ -1,6 +1,7 @@
 # Yetien
 
 [![release](https://github.com/jianxuan-li/yetien-model-grpc-server/actions/workflows/release.yaml/badge.svg)](https://github.com/Jianxuan-Li/yetien-model-grpc-server/actions)
+[![test](https://github.com/Jianxuan-Li/yetien-model-grpc-server/actions/workflows/test.yaml/badge.svg)](https://github.com/Jianxuan-Li/yetien-model-grpc-server/actions)
 
 ## Original Repo
 
